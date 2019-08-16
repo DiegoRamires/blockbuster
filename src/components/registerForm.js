@@ -19,7 +19,9 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
-      await userService.reqister(this.state.data)
+      const response = await userService.reqister(this.state.data)
+      localStorage.setItem('token', response.headers['x-auth-token'])
+      this.props.history.push('/')
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors }
