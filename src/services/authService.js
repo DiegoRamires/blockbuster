@@ -5,6 +5,8 @@ import { apiUrl } from "../config.json"
 const apiEndpoint = apiUrl + "/auth"
 const tokeKey = "token"
 
+http.setJwt(getJwt())
+
 export async function login(email, password) {
   const { data: jwt } = await http.post(apiEndpoint, { email, password })
   localStorage.setItem(tokeKey, jwt)
