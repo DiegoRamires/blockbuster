@@ -28,9 +28,14 @@ export function getCurrentUser() {
   }
 }
 
+export function getJwt() {
+  return localStorage.getItem(tokeKey)
+}
+
 export default {
   login,
   loginWithJWT,
   logout,
   getCurrentUser,
+  getJwt
 }
